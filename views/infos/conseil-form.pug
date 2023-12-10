@@ -1,0 +1,17 @@
+extends ../layout.pug
+
+block content 
+    div(class="d-flex flex-row content mx-auto")
+        div(class="profile-container") 
+        div(class="flex-fill") 
+            form(class="card" method="post" action="/conseil/create")
+                div(class="card-header")  
+                div(class="card-body")
+                    div(class="form-group")
+                        textarea(class="form-control" name="conseil" placeholder="Quel est le conseil du jour?")
+                    if errors 
+                        ul(class="my-2")
+                            each error in errors 
+                                li(class="text-danger")= error
+                    div(class="w-100")
+                        input(type="submit", value="Envoyer" class="btn btn-conseil ml-auto d-block")

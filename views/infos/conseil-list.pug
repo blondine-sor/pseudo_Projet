@@ -1,0 +1,7 @@
+extends ../layout.pug 
+block content 
+    div 
+        if conseils 
+            each conseil in conseils 
+                div 
+                   h4= conseil.conseil

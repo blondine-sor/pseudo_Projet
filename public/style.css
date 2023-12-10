@@ -1,0 +1,21 @@
+.content {
+  max-width: 1000px;
+  margin-top: 20px;
+}
+
+.btn-conseil {
+  background-color: pink;
+  border-radius: 30px;
+}
+.text {
+  color: pink;
+  font-style: oblique;
+  font-size: larger;
+}
+.colors {
+  color: orange;
+  font-size: small;
+}
+.sombre {
+  background-color: black;
+}
