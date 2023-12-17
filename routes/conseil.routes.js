@@ -1,23 +1,34 @@
 const router = require("express").Router();
-const conseil = require("../database/consei.model");
+const conseil = require("../database/model/consei.model");
 
-const createConseil = (request, response) => {
-  response.render("infos/conseil-form");
-};
-const newConseil = (request, response, next) => {
-  console.log("Params", request.params);
-  console.log("Queries", request.query);
-  console.log("Body: ", request.body);
-  response.end();
-};
 router.get("/", (request, response) => {
   conseil
     .find()
     .exec()
     .then((listConseils) => {
-      response.render("infos/conseil-list", { conseil: listConseils });
+      response.render("infos/conseil-list", { conseils: listConseils });
     });
 });
+const createConseil = (request, response) => {
+  response.render("infos/conseil-form");
+};
+const newConseil = (request, response, next) => {
+  const body = request.body;
+  const newAdvice = new conseil(body);
+  newAdvice
+    .save()
+    .then((register) => {
+      response.redirect("/");
+    })
+    .catch((err) => {
+      let errors = [];
+      const errorsKeys = Object.keys(err.errors);
+      errorsKeys.forEach((key) => {
+        errors.push(err.errors[key].message);
+      });
+      response.render("infos/conseil-form", { errors });
+    });
+};
 
 router.get("/new", createConseil);
 router.post("/create", newConseil);

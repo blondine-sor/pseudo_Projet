@@ -1,7 +1,10 @@
 extends ../layout.pug 
 block content 
-    div 
-        if conseils 
-            each conseil in conseils 
-                div 
-                   h4= conseil.conseil
+    div(class="d-flex flex-row content b-pink mx-auto")
+        div(class="profile-container b-red") 
+            include ../includes/profile.pug
+        div(class="flex-fill d-flex flex-column") 
+            if conseils
+                each conseil in conseils 
+                    div(class="card advice-element")
+                        div(class="card-body")= conseil.conseil
