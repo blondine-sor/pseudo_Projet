@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "SET JWT_SECRET=SLEPe87w7eEue337ehndn3hHDjjKKDK && nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Blondine",
